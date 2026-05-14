@@ -1,0 +1,3 @@
+[submodule "external/ComBatHarmonization"]
+	path = external/ComBatHarmonization
+	url = https://github.com/Jfortin1/ComBatHarmonization.git

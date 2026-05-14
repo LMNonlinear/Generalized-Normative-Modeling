@@ -1,0 +1,84 @@
+# ── Directories ──
+backup
+result
+figure
+temp
+.vscode
+codegen
+project
+__pycache__
+.playwright-mcp
+.spec-workflow
+.venv
+
+# ── Data (large files excluded, demo data tracked separately) ──
+data
+!demo/*.csv
+!demo/*.mat
+
+# ── External (ComBat is a submodule, tracked by .gitmodules) ──
+external/eeglab*
+
+# ── Figures (only paper figures tracked) ──
+fig/*
+!fig/paper/
+!fig/paper/**
+
+# ── MATLAB ──
+*.asv
+*.fig
+*.mldatx
+*.prj
+
+# ── Binary/large ──
+*.mat
+*.h5
+*.set
+*.plg
+*.cdc
+*.cmm
+*.inf
+*.pat
+*.mrk
+
+# ── Archives ──
+*.rar
+*.gz
+*.tgz
+*.bz2
+*.zip
+*.7z
+
+# ── Images (except paper figures) ──
+*.bmp
+*.jpg
+*.png
+*.eps
+!fig/paper/**/*.png
+!fig/paper/*.png
+
+# ── Office ──
+~$*.docx
+*.pptx
+
+# ── R ──
+*.RData
+*.RDataTmp
+.Rhistory
+*.R~
+
+# ── Python ──
+*.pyc
+*.html
+
+# ── Logs ──
+*.log
+
+# ── CSV (except demo data) ──
+*.csv
+!demo/*.csv
+
+# ── Other ──
+*.json
+_gsdata_
+*.m~

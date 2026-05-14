@@ -1,0 +1,23 @@
+function [T,tregs]=cv_tnureg(T,tregs)
+
+tregs=tnureg_create(tregs);
+
+for icond=1:tregs.num_cond
+    cond={tregs.condition{1},tregs.condition{2}{icond}};
+    disp(['regression data [',cond{2},'] in [',cond{1},']'])
+    [T,tregs.regs{icond}]=cv_nureg_table(T,...
+        cond,...
+        tregs.factor_mu,...
+        tregs.factor_sigma,...
+        tregs.resp,...
+        tregs.hList,...
+        tregs.opt,...
+        tregs.regs{icond});
+end
+
+
+
+end
+
+
+
