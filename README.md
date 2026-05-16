@@ -13,7 +13,7 @@ GNM-ToolBox is an open-source MATLAB toolbox for **harmonized normative modeling
 ## Overview
 
 <p align="center">
-  <img src="fig/paper/fig01_pipeline.png" alt="GNM Pipeline" width="720"/>
+  <img src="fig/paper/fig_gnm_pipeline_aigen.png" alt="GNM Pipeline" width="720"/>
 </p>
 
 <p align="center"><em>Figure 1. GNM-ToolBox pipeline: from CSV + formula to harmonized data and batch-corrected z-scores.</em></p>
@@ -56,10 +56,10 @@ Existing approaches have limitations:
 ## Method
 
 <p align="center">
-  <img src="fig/paper/fig02_model_algorithm.png" alt="Hierarchical Solving Strategy" width="720"/>
+  <img src="fig/paper/fig01_pipeline.png" alt="GNM Algorithm Flowchart" width="720"/>
 </p>
 
-<p align="center"><em>Figure 2. Hierarchical solving: (a) decomposition into global trajectory + batch deviation on standardized scale; (b) Level 1 global kernel regression; (c) Level 2 per-batch kernel regression on z-score residuals.</em></p>
+<p align="center"><em>Figure 2. GNM algorithm flowchart: hierarchical two-level kernel regression with gnm_fit() producing self-correcting z-scores.</em></p>
 
 ### The Unified Equation
 
@@ -221,9 +221,9 @@ Supported link functions: `identity`, `log`, `logit`, `sqrt`, `probit`.
 
 <p align="center"><em>Figure 4. Simulation: 3 batches with nonlinear μ(x), heteroscedastic σ(x), and batch-specific shifts. GNM successfully harmonizes data (B) and produces centered, unit-variance z-scores per batch (D).</em></p>
 
-### Real Data: Three-Method Comparison
+### Real Data: Four-Method Comparison
 
-GNM was validated on two multi-site datasets and compared against ComBat+Normative and GAMLSS:
+GNM was validated on two multi-site datasets and compared against ComBat+Normative, GAMLSS, and HBR:
 
 | Dataset | Sites | Subjects | Features | R²(site\|z) |
 |---------|:---:|:---:|:---:|:---:|
@@ -231,10 +231,16 @@ GNM was validated on two multi-site datasets and compared against ComBat+Normati
 | HarMNqEEG (log-power spectra) | 14 | 1,564 | 18 ch × 235 freq | **0.000014** |
 
 <p align="center">
-  <img src="fig/paper/fig07_method_comparison.png" alt="Three-Method Comparison" width="720"/>
+  <img src="fig/paper/Fig1_GNM_evaluation.png" alt="GNM Evaluation on ABIDE I" width="720"/>
 </p>
 
-<p align="center"><em>Figure 7. Three-method comparison on HarMNqEEG. (A) Per-site mean(z) with H₀: mean=0 tests. (B) Per-site std(z) with H₀: std=1 tests. (C) Per-channel |r(age,z)| with Bonferroni significance. (D) Test-set z-score density vs. N(0,1).</em></p>
+<p align="center"><em>Figure 4. ABIDE I evaluation. (a-b) PCA: raw vs harmonized. (c) Site classification accuracy. (d) Site R² per ROI. (e-f) Age prediction. (g) Z-score distribution. (h) QQ-plot. (i) Per-site calibration.</em></p>
+
+<p align="center">
+  <img src="fig/paper/fig08_four_way_comparison.png" alt="Four-Method Comparison" width="720"/>
+</p>
+
+<p align="center"><em>Figure 5. Four-method comparison on ABIDE I (GNM, ComBat+Norm, GAMLSS, HBR). Site effect removal, biological signal preservation, and z-score calibration metrics.</em></p>
 
 ### Key Results
 
@@ -330,10 +336,27 @@ If you use GNM-ToolBox in your research, please cite:
 
 ## Authors
 
-- **Min Li** — Hangzhou Dianzi University, Hangzhou, China
-  [minli.231314@gmail.com](mailto:minli.231314@gmail.com)
-- **Ying Wang** — China-Cuba Belt and Road Joint Laboratory on Neurotechnology and Brain-Apparatus Communication, University of Electronic Science and Technology of China, Chengdu 610054, China
-  [yingwangrigel@gmail.com](mailto:yingwangrigel@gmail.com)
+- **Min Li**<sup>1,\*</sup> — School of Computer Science and Technology, Hangzhou Dianzi University, Hangzhou, China
+- **Ying Wang**<sup>2</sup> — China-Cuba Belt and Road Joint Laboratory on Neurotechnology and Brain-Apparatus Communication, University of Electronic Science and Technology of China, Chengdu, China
+- **Yajun Shen**<sup>4</sup> — Puyang Medical College, Puyang, China
+- **Maria L. Bringas-Vega**<sup>2,3</sup> — Cuban Center for Neuroscience, La Habana, Cuba
+- **Pedro Antonio Valdes-Sosa**<sup>2,3</sup> — Cuban Center for Neuroscience, La Habana, Cuba
+- **Lin An**<sup>1</sup> — School of Computer Science and Technology, Hangzhou Dianzi University, Hangzhou, China
+- **Gangyong Jia**<sup>1,\*</sup> — School of Computer Science and Technology, Hangzhou Dianzi University, Hangzhou, China
+
+<sup>1</sup> Hangzhou Dianzi University, Hangzhou, China
+<sup>2</sup> University of Electronic Science and Technology of China, Chengdu, China
+<sup>3</sup> Cuban Center for Neuroscience, La Habana, Cuba
+<sup>4</sup> Puyang Medical College, Puyang, China
+<sup>\*</sup> Correspondence: minli.231314@hdu.edu.cn (M.L.)
+
+---
+
+## Grants
+
+- ML was supported by Hangzhou Dianzi University Seed Fund Project (KYS055623037) and Zhejiang Provincial Higher Education Institutions' Basic Operations Project (GK239909299001-025).
+- GJ was supported by the Zhejiang Key Research and Development Program under Grant No. 2026C01028 and No. 2023C03194.
+- PAVS was supported by National Key R&D Program of China (2024YFE0215100), the CNS Program of the University of Electronic Science and Technology of China (UESTC) (Grant No. Y03023206100204).
 
 ---
 
@@ -372,5 +395,5 @@ The ComBatHarmonization submodule is distributed under its own license (Artistic
 ## Contact
 
 - Issues: [GitHub Issues](https://github.com/LMNonlinear/Generalized-Normative-Modeling/issues)
-- Min Li: [minli.231314@gmail.com](mailto:minli.231314@gmail.com)
+- Min Li: [minli.231314@hdu.edu.cn](mailto:minli.231314@hdu.edu.cn)
 - Ying Wang: [yingwangrigel@gmail.com](mailto:yingwangrigel@gmail.com)
